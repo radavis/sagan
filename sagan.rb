@@ -5,7 +5,7 @@ require "uri"
 def links
   result = []
   csv_options = {
-    col_sep: ", ",
+    col_sep: "; ",
     headers: true,
     header_converters: :symbol
   }
@@ -18,7 +18,7 @@ def links
 end
 
 def sorted_links
-  links.sort_by { |link| link[:title] }
+  links.sort_by { |link| link[:title].downcase }
 end
 
 get "/" do
