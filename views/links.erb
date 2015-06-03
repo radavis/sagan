@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Hostname</th>
+    <th>Description</th>
+  </tr>
+
+  <% links.each do |link| %>
+    <tr>
+      <td>
+        <a href="<%= link[:url] %>">
+          <%= link[:title] %>
+        </a>
+      </td>
+
+      <td>
+        <%= link[:hostname] %>
+      </td>
+
+      <td>
+        <%= link[:description] %>
+      </td>
+    </tr>
+  <% end %>
+</table>

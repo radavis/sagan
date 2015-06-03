@@ -1,0 +1,17 @@
+url, title, description
+https://horizon.launchacademy.com/, Horizon, CMS for Launch Academy Curriculum
+https://event-horizon-staging.herokuapp.com/, Horizon-Staging, Staging for Event Horizon
+https://liftoff.launchacademy.com/, Liftoff, Hiring Partner lead generator
+https://liftoff-staging.herokuapp.com/, Liftoff-Staging, Staging for Liftoff
+http://flightops.launchacademy.com/Home, Flight-Ops, Wiki for internal processes and operations
+https://launchpass.launchacademy.com/, Launch Pass, OAuth provider for Launch Academy applications
+https://launch-pass-staging.herokuapp.com/, Launch Pass-Staging, Staging for Launch Pass
+https://docs.google.com/spreadsheets/d/1DAhJ2khf90Ds_WoKndw2u2P11stGUv78u1_4JNRInHo, Curriculum Timeline, Timeline for organizing and presenting curriculum to students for the on-premesis program
+https://docs.google.com/spreadsheets/d/1Dr2X4zswI-iAdH8dGXWwZpbi4V9YkpmRkzvNlERpbk4, Time Tracker, Worksheet for tracking time spent on students/software/curriculum
+https://launchvotes.herokuapp.com/, LaunchVotes, Nominate and vote on Weekly Launcher Awards
+https://pivotaltracker.com/, Tracker, Project management tool
+https://www.pivotaltracker.com/n/projects/1294512, Tracker - Software, Pivotal Tracker board for Software Projects
+https://www.pivotaltracker.com/n/projects/1279426, Tracker - Curriculum, Pivotal Tracker board for Curriculum Projects
+https://www.pivotaltracker.com/n/projects/1294564, Tracker - Online Offering, Pivotal Tracker board for the Online Offering
+https://www.pivotaltracker.com/n/projects/1229900, Tracker - Other, Pivotal Tracker board for Other projects
+https://learn.launchacademy.com/, Learn, Online Offering
