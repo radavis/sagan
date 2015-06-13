@@ -23,14 +23,17 @@ def csv_file
   end
 end
 
-def links
-  result = []
-  filename = csv_file
-  csv_options = {
+def csv_options
+  {
     col_sep: "; ",
     headers: true,
     header_converters: :symbol
   }
+end
+
+def links
+  result = []
+  filename = csv_file
   CSV.foreach(filename, csv_options) do |row|
     link = row.to_hash
     link[:hostname] = URI(link[:url]).hostname
@@ -44,5 +47,19 @@ get "/" do
 end
 
 get "/links" do
-  erb :links, locals: { links: links }
+  erb :"links/index", locals: { links: links }
+end
+
+get "/links/new" do
+  erb :"links/new"
+end
+
+post "/links" do
+  link = params[:link]
+  basename = link[:category]
+  filename = "#{basename}.csv"
+  CSV.open(filename, "a", csv_options) do |csv|
+    csv << [link[:url], link[:title], link[:description]]
+  end
+  redirect to("/links")
 end
