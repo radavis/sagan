@@ -31,9 +31,8 @@ def csv_options
   }
 end
 
-def links
+def links(filename = csv_file)
   result = []
-  filename = csv_file
   CSV.foreach(filename, csv_options) do |row|
     link = row.to_hash
     link[:hostname] = URI(link[:url]).hostname
@@ -52,6 +51,11 @@ end
 
 get "/links/new" do
   erb :"links/new"
+end
+
+get "/links/:category" do |category|
+  filename = "#{category}.csv"
+  erb :"links/index", locals: { links: links(filename) }
 end
 
 post "/links" do
