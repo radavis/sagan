@@ -1,7 +1,6 @@
 require "csv"
 require "sinatra"
 require "uri"
-require "pry"
 
 def csv_files
   result = {}
