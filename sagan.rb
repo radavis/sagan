@@ -3,24 +3,15 @@ require "sinatra"
 require "uri"
 require "pry"
 
-def at_work?
-  t = Time.now
-  start_time = Time.local(t.year, t.month, t.day, 7, 30)
-  end_time = Time.local(t.year, t.month, t.day, 17, 30)
-
-  if (1..5).include?(t.wday) && t.between?(start_time, end_time)
-    return true
+def csv_files
+  result = {}
+  path = File.expand_path(File.dirname(__FILE__))
+  filenames = Dir[File.join(path, "links", "*.csv")]
+  filenames.each do |filename|
+    basename = File.basename(filename, ".csv")
+    result[basename] = filename
   end
-
-  return false
-end
-
-def csv_file
-  if at_work?
-    return "work.csv"
-  else
-    return "home.csv"
-  end
+  result
 end
 
 def csv_options
@@ -31,14 +22,22 @@ def csv_options
   }
 end
 
-def links(filename = csv_file)
-  result = []
+def links(filename)
+  results = []
   CSV.foreach(filename, csv_options) do |row|
     link = row.to_hash
     link[:hostname] = URI(link[:url]).hostname
-    result << link
+    results << link
   end
-  result.sort_by { |link| link[:title].downcase }
+  results.sort_by { |link| link[:title].downcase }
+end
+
+def csv_links
+  results = {}
+  csv_files.each do |category, filename|
+    results[category] = links(filename)
+  end
+  results
 end
 
 get "/" do
@@ -46,7 +45,7 @@ get "/" do
 end
 
 get "/links" do
-  erb :"links/index", locals: { links: links }
+  erb :"links/index", locals: { links: csv_links }
 end
 
 get "/links/new" do

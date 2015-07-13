@@ -12,8 +12,10 @@
 
   <body>
     <div class="row">
-      <%= erb :nav %>
-      <%= yield %>
+      <div class="small-12 columns">
+        <%= erb :nav %>
+        <%= yield %>
+      </div>
     </div>
 
     <script src="/js/jquery.js"></script>

@@ -1,27 +1,45 @@
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Hostname</th>
-    <th>Description</th>
-  </tr>
-
-  <% links.each do |link| %>
-    <tr>
-      <td>
-        <a href="<%= link[:url] %>">
-          <%= link[:title] %>
-        </a>
-      </td>
-
-      <td>
-        <%= link[:hostname] %>
-      </td>
-
-      <td>
-        <%= link[:description] %>
-      </td>
-    </tr>
+<ul class="tabs" data-tab>
+  <% i = 0 %>
+  <% links.keys.each do |category| %>
+    <li class="tab-title<%= i == 0 ? " active" : "" %>">
+      <a href="#<%= category%>"><%= category %></a>
+    </li>
+    <% i += 1 %>
   <% end %>
-</table>
+</ul>
+
+<div class="tabs-content">
+  <% i = 0 %>
+  <% links.each do |category, category_links| %>
+    <div class="content<%= i == 0 ? " active" : "" %>" id="<%= category %>">
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Hostname</th>
+          <th>Description</th>
+        </tr>
+
+        <% category_links.each do |link| %>
+          <tr>
+            <td>
+              <a href="<%= link[:url] %>">
+                <%= link[:title] %>
+              </a>
+            </td>
+
+            <td>
+              <%= link[:hostname] %>
+            </td>
+
+            <td>
+              <%= link[:description] %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <% i += 1 %>
+  <% end %>
+</div>
 
 <a href="/links/new">Add a Link</a>
