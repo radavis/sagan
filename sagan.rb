@@ -2,10 +2,16 @@ require "csv"
 require "sinatra"
 require "uri"
 
-def csv_files
+def path
+  File.expand_path(File.dirname(__FILE__))
+end
+
+def filenames
+  Dir[File.join(path, "links", "*.csv")]
+end
+
+def category_files
   result = {}
-  path = File.expand_path(File.dirname(__FILE__))
-  filenames = Dir[File.join(path, "links", "*.csv")]
   filenames.each do |filename|
     basename = File.basename(filename, ".csv")
     result[basename] = filename
@@ -31,28 +37,28 @@ def links(filename)
   results.sort_by { |link| link[:title].downcase }
 end
 
-def csv_links
+def all_links
   results = {}
-  csv_files.each do |category, filename|
+  category_files.each do |category, filename|
     results[category] = links(filename)
   end
   results
 end
 
 get "/" do
-  redirect to("/links")
+  redirect to("/categories")
 end
 
-get "/links" do
-  erb :"links/index", locals: { links: csv_links }
+get "/categories" do
+  erb :"categories/index", locals: { links: all_links }
 end
 
 get "/links/new" do
-  erb :"links/new"
+  erb :"links/new", locals: { categories: category_files.keys }
 end
 
 get "/links/:category" do |category|
-  filename = "#{category}.csv"
+  filename = File.join(path, "links", "#{category}.csv")
   erb :"links/index", locals: { links: links(filename) }
 end
 

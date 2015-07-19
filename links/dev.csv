@@ -1,7 +1,8 @@
 url; title; description
 http://localhost:1080; mailcatcher; Local Mailcatcher Server
-http://localhost:3000; rails Server; Local Rails Server
-http://localhost:4567; sinatra Server; Local Sinatra Server
+http://localhost:3000; rails server; Local Rails Server
+http://localhost:4567; sinatra server; Local Sinatra Server
 http://bman.dev; bman; "man in the browser"
 https://github.com/radavis; github/radavis; My GitHub
 https://radavis.github.io/; radavis.github.io; My Blog
+http://foundation.zurb.com/docs/; foundation docs; ""

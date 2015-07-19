@@ -1,14 +1,14 @@
 url; title; description
 http://flightops.launchacademy.com/Home; Flight-Ops; Wiki for internal processes and operations
-https://docs.google.com/spreadsheets/d/1DAhJ2khf90Ds_WoKndw2u2P11stGUv78u1_4JNRInHo; Curriculum Timeline; Timeline for organizing and presenting curriculum to students for the on-premesis program
+https://docs.google.com/spreadsheets/d/1DAhJ2khf90Ds_WoKndw2u2P11stGUv78u1_4JNRInHo; Curriculum Timeline; Timeline for organizing curriculum for the on-site program
 https://docs.google.com/spreadsheets/d/1Dr2X4zswI-iAdH8dGXWwZpbi4V9YkpmRkzvNlERpbk4; Time Tracker; Worksheet for tracking time spent on students/software/curriculum
 https://launchvotes.herokuapp.com/; LaunchVotes; Nominate and vote on Weekly Launcher Awards
-https://www.pivotaltracker.com/n/projects/1294512; Tracker - Software; Pivotal Tracker board for Software Projects
-https://www.pivotaltracker.com/n/projects/1279426; Tracker - Curriculum; Pivotal Tracker board for Curriculum Projects
-https://www.pivotaltracker.com/n/projects/1294564; Tracker - Online Offering; Pivotal Tracker board for the Online Offering
-https://www.pivotaltracker.com/n/projects/1229900; Tracker - Other; Pivotal Tracker board for Other projects
+https://www.pivotaltracker.com/n/projects/1294512; Software Tracker; Pivotal Tracker board for Software Projects
+https://www.pivotaltracker.com/n/projects/1279426; Curriculum Tracker; Pivotal Tracker board for Curriculum Projects
+https://www.pivotaltracker.com/n/projects/1294564; Online Offering Tracker; Pivotal Tracker board for the Online Offering
+https://www.pivotaltracker.com/n/projects/1229900; Other Tracker; Pivotal Tracker board for Other projects
 https://github.com/LaunchAcademy; github/LaunchAcademy; LaunchAcademy's GitHub
-https://learn.launchacademy.com/questions?query=unanswered; Unanswered Horizon Questions; Launchers have questions, we have answers.
+https://learn.launchacademy.com/questions?query=unanswered; Horizon Questions; Launchers have questions, we have answers.
 https://github.com/LaunchAcademy/curriculum; Curriculum Repo; Lessons for Horizon
 https://calendar.google.com/; Google Calendar; Calendar
 http://KingHippo.local:5000/; KingHippo Fileserver; Fileserver for screencasts, videos, pictures and other media

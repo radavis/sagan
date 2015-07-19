@@ -10,8 +10,11 @@
       </div>
       <div class="small-3 columns">
         <select class="postfix" name="link[category]">
-          <option value="work">Work</option>
-          <option value="home">Home</option>
+          <% categories.each do |category| %>
+            <option value="work">
+              <%= category %>
+            </option>
+          <% end %>
         </select>
       </div>
     </div>
