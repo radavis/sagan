@@ -1,7 +1,6 @@
 require "csv"
 require "sinatra"
 require "uri"
-require "pry"
 
 def at_work?
   t = Time.now
