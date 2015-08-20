@@ -5,7 +5,7 @@ A homepage for Launch Academy Staff.
 ## Run the server with pow
 
 ```
-$ curl get.pow.cs | sh
+$ curl get.pow.cx | sh
 $ cd ~/.pow
 $ ln -s /path/to/cloned/repo
 ```
