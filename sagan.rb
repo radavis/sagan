@@ -3,7 +3,7 @@ require "sinatra"
 require "uri"
 
 def path
-  File.expand_path(File.dirname(__FILE__))
+  File.expand_path(File.dirname("__FILE__"))
 end
 
 def filenames
@@ -50,6 +50,7 @@ get "/" do
 end
 
 get "/categories" do
+  @quote = File.readlines("quotes.csv", csv_options).sample.chomp
   erb :"categories/index", locals: { links: all_links }
 end
 
@@ -65,9 +66,9 @@ end
 post "/links" do
   link = params[:link]
   basename = link[:category]
-  filename = "#{basename}.csv"
+  filename = File.join(path, "links", "#{basename}.csv")
   CSV.open(filename, "a", csv_options) do |csv|
     csv << [link[:url], link[:title], link[:description]]
   end
-  redirect to("/links")
+  redirect to("/categories")
 end
