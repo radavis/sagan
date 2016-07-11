@@ -45,12 +45,15 @@ def all_links
   results
 end
 
+before do
+  @quote = File.readlines("quotes", csv_options).sample.chomp
+end
+
 get "/" do
   redirect to("/categories")
 end
 
 get "/categories" do
-  @quote = File.readlines("quotes.csv", csv_options).sample.chomp
   erb :"categories/index", locals: { links: all_links }
 end
 

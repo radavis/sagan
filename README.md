@@ -1,6 +1,6 @@
 # Sagan
 
-A homepage for Launch Academy Staff.
+A landing page for your browser.
 
 ## Run the server with pow
 
