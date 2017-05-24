@@ -8,17 +8,17 @@
   <% links.each do |link| %>
     <tr>
       <td>
-        <a href="<%= link[:url] %>">
-          <%= link[:title] %>
+        <a href="<%= link.url %>">
+          <%= link.title %>
         </a>
       </td>
 
       <td>
-        <%= link[:hostname] %>
+        <%= link.hostname %>
       </td>
 
       <td>
-        <%= link[:description] %>
+        <%= link.description %>
       </td>
     </tr>
   <% end %>

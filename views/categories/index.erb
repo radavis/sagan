@@ -1,19 +1,15 @@
 <ul class="tabs" data-tab>
-  <% i = 0 %>
-  <% links.keys.each do |category| %>
-    <li class="tab-title<%= i == 0 ? " active" : "" %>">
+  <% categories.each_with_index do |category, i| %>
+    <li class="tab-title<%= i == 8 ? " active" : "" %>">
       <a href="#<%= category%>"><%= category %></a>
     </li>
-    <% i += 1 %>
   <% end %>
 </ul>
 
 <div class="tabs-content">
-  <% i = 0 %>
-  <% links.each do |category, category_links| %>
-    <div class="content<%= i == 0 ? " active" : "" %>" id="<%= category %>">
-      <%= erb :"links/index", locals: { links: category_links } %>
+  <% categories.each_with_index do |category, i| %>
+    <div class="content<%= i == 8 ? " active" : "" %>" id="<%= category %>">
+      <%= erb :"links/index", locals: { links: category.links } %>
     </div>
-    <% i += 1 %>
   <% end %>
 </div>
