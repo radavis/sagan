@@ -1,3 +1,4 @@
 tmp
 .DS_Store
-sql/links.csv
+data/links.csv
+sql/data.sql

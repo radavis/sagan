@@ -5,12 +5,11 @@ A landing page for your browser.
 
 ## Adding Links
 
-Just add links to any of the `.csv` files in `links`, or create your own `.csv` file of links. Delimiter is `semicolon space` `; `.
-
+Just add links to a `data/links.csv` file. Delimiter is `semicolon space` `; `.
 
 ### Example
 
-See `sql/links.example.csv`.
+See `data/links.example.csv`.
 
 ## Drop development database
 
@@ -28,6 +27,8 @@ mysql> \q
 ```
 
 ## Load database schema and data
+
+Copy and modify `sql/data.example.sql`.
 
 ```
 $ mysql -h localhost -u root -p sagan_development < sql/schema.sql
@@ -60,10 +61,10 @@ $ ln -s /path/to/cloned/repo
 
 ## TODO
 
-* [ ] Extract links and link collections into classes
+* [x] Extract links and link collections into classes
 * [ ] Handle URL fragments that start with a number (e.g.- 3d-printing)
-* [ ] Move links and quotes to `/data` folder
-* [ ] Add sample link.csv files, .gitignore the rest
-* [ ] Migrate to a database-backed link storage system
-* [ ] Upgrade Ruby/Sinatra
-* [ ] Use CDN-hosted Foundation assets
+* [x] Move links and quotes to `/data` folder
+* [x] Add sample link.csv files, .gitignore the rest
+* [x] Migrate to a database-backed link storage system
+* [x] Upgrade Ruby/Sinatra
+* [x] Use CDN-hosted Foundation assets
