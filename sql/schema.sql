@@ -1,3 +1,10 @@
+drop table if exists quotes;
+create table quotes (
+  id int(11) not null auto_increment,
+  content varchar(255) not null,
+  PRIMARY KEY (id)
+);
+
 drop table if exists links;
 create table links (
   id int(11) not null auto_increment,

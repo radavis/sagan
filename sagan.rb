@@ -1,43 +1,40 @@
+require "pry"
 require "sinatra"
 require "uri"
-require_relative "./models/link"
 require_relative "./models/category"
+require_relative "./models/link"
+require_relative "./models/quote"
 
-def csv_options
-  {
-    col_sep: "; ",
-    headers: true,
-    header_converters: :symbol
-  }
-end
-
-before do
-  @quote = File.readlines("quotes", csv_options).sample.chomp
-end
+before { @quote = Quote.all.sample }
 
 get "/" do
   redirect to("/categories")
 end
 
 get "/categories" do
-  erb :"categories/index", locals: { links: Link.all, categories: Category.all }
+  erb :"categories/index",
+    locals: {
+      links: Link.all,
+      categories: Category.all
+    }
 end
 
 get "/links/new" do
-  erb :"links/new", locals: { categories: category_files.keys }
+  erb :"links/new", locals: { categories: Category.all }
 end
 
-get "/links/:category" do |category|
-  filename = File.join(path, "links", "#{category}.csv")
-  erb :"links/index", locals: { links: links(filename) }
+get "/categories/:name/links" do |name|
+  category = Category.new(name)
+  erb :"links/index", locals: { links: category.links }
 end
 
-# post "/links" do
-#   link = params[:link]
-#   basename = link[:category]
-#   filename = File.join(path, "links", "#{basename}.csv")
-#   CSV.open(filename, "a", csv_options) do |csv|
-#     csv << [link[:url], link[:title], link[:description]]
-#   end
-#   redirect to("/categories")
-# end
+post "/links" do
+  link = Link.new(params[:link])
+  if link.save
+    # flash[:notice] = "Link added."
+    redirect to("/categories")
+  else
+    # flash[:error] = "There was a problem..."
+    erb :"links/new", locals: { categories: Category.all }
+  end
+end

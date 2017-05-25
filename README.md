@@ -34,6 +34,15 @@ $ mysql -h localhost -u root -p sagan_development < sql/schema.sql
 $ mysql -h localhost -u root -p --local-infile sagan_development < sql/data.sql
 ```
 
+## Rebuild database
+
+```
+echo "drop database if exists sagan_development;" | mysql -h localhost -u root
+echo "create database sagan_development;" | mysql -h localhost -u root
+mysql -h localhost -u root sagan_development < sql/schema.sql
+mysql -h localhost -u root --local-infile sagan_development < sql/data.sql
+```
+
 ## Open the database in MySQL
 
 ```

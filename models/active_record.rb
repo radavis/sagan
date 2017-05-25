@@ -21,5 +21,5 @@ require 'yaml'
 filename = File.join(File.dirname(__FILE__), "config", "database.yml")
 config = YAML.load_file(filename)
 client = Mysql2::Client.new(config["development"])
-client.query("select * from links;").to_a
+client.query("select * from links;", symbolize_keys: true).to_a
 NOTES
