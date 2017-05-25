@@ -9,6 +9,7 @@ class ActiveRecord
     end
 
     def client
+      # TODO: change, based on environment
       @_client ||= Mysql2::Client.new(config["development"])
     end
   end

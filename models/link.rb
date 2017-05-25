@@ -24,6 +24,7 @@ class Link < ActiveRecord
   end
 
   def save
+    # TODO: escape input
     sql = <<-SQL
       insert into links (url, title, description, category)
       values ('#{url}', '#{title}', '#{description}', '#{category}');
