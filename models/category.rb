@@ -3,7 +3,8 @@ require_relative "active_record"
 class Category < ActiveRecord
   class << self
     def all
-      client.query("select distinct category from links;", symbolize_keys: true).
+      sql = "select distinct links.category from links order by links.category;"
+      client.query(sql, symbolize_keys: true).
         to_a.
         map { |row| new(row[:category]) }
     end
@@ -20,8 +21,9 @@ class Category < ActiveRecord
   end
 
   def links
+    sql = "select * from links where category = '#{name}';"
     self.class.client.
-      query("select * from links where category = '#{name}';", symbolize_keys: true).
+      query(sql, symbolize_keys: true).
       to_a.
       map { |row| Link.new(row) }
   end

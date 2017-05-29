@@ -1,4 +1,3 @@
-require 'mysql2'
 require 'yaml'
 
 class ActiveRecord

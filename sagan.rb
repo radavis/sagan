@@ -1,14 +1,23 @@
-require "pry"
 require "sinatra"
-require "uri"
+require "bundler/setup"
+Bundler.require(:default, Sinatra::Application.environment)
+
+require_relative "./lib/current_time"
 require_relative "./models/category"
 require_relative "./models/link"
 require_relative "./models/quote"
 
-before { @quote = Quote.all.sample }
+before do
+  @work_category = "workbar"
+  @quote = Quote.all.sample
+end
 
 get "/" do
-  redirect to("/categories")
+  if CurrentTime.new.working_hours?
+    redirect to("/categories/#{@work_category}/links")
+  else
+    redirect to("/categories")
+  end
 end
 
 get "/categories" do
@@ -37,4 +46,10 @@ post "/links" do
     # flash[:error] = "There was a problem..."
     erb :"links/new", locals: { categories: Category.all }
   end
+end
+
+delete "/links/:id" do |id|
+  link = Link.find(id)
+  link.destroy
+  status 200
 end

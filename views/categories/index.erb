@@ -1,14 +1,14 @@
 <ul class="tabs" data-tab>
-  <% categories.each_with_index do |category, i| %>
-    <li class="tab-title<%= i == categories.count - 1 ? " active" : "" %>">
-      <a href="#<%= category%>"><%= category %></a>
+  <% categories.each do |category| %>
+    <li class="tab-title<%= category == categories.first ? " active" : "" %>">
+      <a href="#<%= category %>"><%= category %></a>
     </li>
   <% end %>
 </ul>
 
 <div class="tabs-content">
-  <% categories.each_with_index do |category, i| %>
-    <div class="content<%= i == categories.count - 1 ? " active" : "" %>" id="<%= category %>">
+  <% categories.each do |category| %>
+    <div class="content<%= category == categories.first ? " active" : "" %>" id="<%= category %>">
       <%= erb :"links/index", locals: { links: category.links } %>
     </div>
   <% end %>

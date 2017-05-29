@@ -15,4 +15,6 @@ table {
   padding: 0.5rem 1rem !important;
 }
 
-
+.delete-link input.button {
+  margin-bottom: 0;
+}

@@ -3,9 +3,18 @@ require_relative "active_record"
 class Link < ActiveRecord
   class << self
     def all
-      client.query("select * from links;", symbolize_keys: true).
+      client.query("select * from links order by links.title;", symbolize_keys: true).
         to_a.
         map { |link| new(link) }
+    end
+
+    def find(id)
+      results = client.query("select * from links where links.id = #{id} limit 1", symbolize_keys: true)
+      if results.any?
+        return new(results.first)
+      else
+        return nil
+      end
     end
   end
 
@@ -29,6 +38,11 @@ class Link < ActiveRecord
       insert into links (url, title, description, category)
       values ('#{url}', '#{title}', '#{description}', '#{category}');
     SQL
+    self.class.client.query(sql)
+  end
+
+  def destroy
+    sql = "delete from links where links.id = #{id}"
     self.class.client.query(sql)
   end
 end

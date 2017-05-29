@@ -68,3 +68,6 @@ $ ln -s /path/to/cloned/repo
 * [x] Migrate to a database-backed link storage system
 * [x] Upgrade Ruby/Sinatra
 * [x] Use CDN-hosted Foundation assets
+* [x] Delete links
+* [ ] Flash notifications
+* [x] Default tab changes based on day and time

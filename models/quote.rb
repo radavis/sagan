@@ -1,3 +1,5 @@
+require_relative "active_record"
+
 class Quote < ActiveRecord
   class << self
     def all
