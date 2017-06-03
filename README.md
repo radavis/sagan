@@ -28,11 +28,11 @@ mysql> \q
 
 ## Load database schema and data
 
-Copy and modify `sql/data.example.sql`.
+Copy and modify `sql/seed.example.sql`.
 
 ```
 $ mysql -h localhost -u root -p sagan_development < sql/schema.sql
-$ mysql -h localhost -u root -p --local-infile sagan_development < sql/data.sql
+$ mysql -h localhost -u root -p --local-infile sagan_development < sql/seed.sql
 ```
 
 ## Rebuild database
@@ -41,7 +41,7 @@ $ mysql -h localhost -u root -p --local-infile sagan_development < sql/data.sql
 echo "drop database if exists sagan_development;" | mysql -h localhost -u root
 echo "create database sagan_development;" | mysql -h localhost -u root
 mysql -h localhost -u root sagan_development < sql/schema.sql
-mysql -h localhost -u root --local-infile sagan_development < sql/data.sql
+mysql -h localhost -u root --local-infile sagan_development < sql/seed.sql
 ```
 
 ## Open the database in MySQL
@@ -71,3 +71,4 @@ $ ln -s /path/to/cloned/repo
 * [x] Delete links
 * [ ] Flash notifications
 * [x] Default tab changes based on day and time
+* [ ] Vue.js create/edit/delete components

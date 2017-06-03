@@ -24,23 +24,39 @@ RSpec.describe CurrentTime do
   end
 
   describe "#working_hours?" do
-    it "returns false in the eary morning" do
-      allow(subject).to receive(:now) { Time.parse("8:30") }
+    it "returns false in the early morning" do
+      eight_am_monday = "2017-05-29 8:00:00 -0400"  # time.to_s
+      allow(subject).to receive(:now) { Time.parse(eight_am_monday) }
       expect(subject.working_hours?).to eq(false)
     end
 
     it "returns true after 9 AM" do
-      allow(subject).to receive(:now) { Time.parse("9:05 AM") }
+      nine_am_monday = "2017-05-29 9:05:00 -0400"
+      allow(subject).to receive(:now) { Time.parse(nine_am_monday) }
       expect(subject.working_hours?).to eq(true)
     end
 
     it "returns true before 5 PM" do
-      allow(subject).to receive(:now) { Time.parse("4:55 PM") }
+      almost_five_pm = "2017-05-29 16:55:00 -0400"
+      allow(subject).to receive(:now) { Time.parse(almost_five_pm) }
       expect(subject.working_hours?).to eq(true)
     end
 
     it "returns false after 5 PM" do
-      allow(subject).to receive(:now) { Time.parse("5:05 PM") }
+      after_five_pm = "2017-05-29 17:05:00 -0400"
+      allow(subject).to receive(:now) { Time.parse(after_five_pm) }
+      expect(subject.working_hours?).to eq(false)
+    end
+
+    it "returns false if day is Saturday" do
+      saturday = "2017-06-03 12:00:00 -0400"
+      allow(subject).to receive(:now) { Time.parse(saturday) }
+      expect(subject.working_hours?).to eq(false)
+    end
+
+    it "returns false if day is Sunday" do
+      saturday = "2017-06-04 12:00:00 -0400"
+      allow(subject).to receive(:now) { Time.parse(saturday) }
       expect(subject.working_hours?).to eq(false)
     end
   end

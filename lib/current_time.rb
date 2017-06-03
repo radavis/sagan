@@ -9,10 +9,18 @@ class CurrentTime
   end
 
   def working_hours?
-    nine_am < now && now < five_pm
+    !weekend? && (nine_am < now && now < five_pm)
+  end
+
+  def weekend?
+    ["Saturday", "Sunday"].include?(day)
   end
 
   private
+
+  def day
+    now.strftime("%A")
+  end
 
   def now
     Time.current

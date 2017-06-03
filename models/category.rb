@@ -21,7 +21,7 @@ class Category < ActiveRecord
   end
 
   def links
-    sql = "select * from links where category = '#{name}';"
+    sql = "select * from links where category = '#{name}' order by links.title;"
     self.class.client.
       query(sql, symbolize_keys: true).
       to_a.

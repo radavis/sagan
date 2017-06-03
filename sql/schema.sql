@@ -14,3 +14,5 @@ create table links (
   category varchar(255) default 'article',
   PRIMARY KEY (id)
 );
+
+-- add index on title and url
