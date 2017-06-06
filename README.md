@@ -11,11 +11,12 @@ Just add links to a `data/links.csv` file. Delimiter is `semicolon space` `; `.
 
 See `data/links.example.csv`.
 
-## Drop development database
+## Drop development databases
 
 ```
 $ mysql -h localhost -u root -p
 mysql> drop database if exists sagan_development;
+mysql> drop database if exists sagan_test;
 ```
 
 ## Create development database
@@ -23,6 +24,7 @@ mysql> drop database if exists sagan_development;
 ```
 $ mysql -h localhost -u root -p
 mysql> create database sagan_development;
+mysql> create database sagan_test;
 mysql> \q
 ```
 
