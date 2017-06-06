@@ -39,6 +39,7 @@ class Link < ActiveRecord
       values ('#{url}', '#{title}', '#{description}', '#{category}');
     SQL
     self.class.client.query(sql)
+    self.class.client.query("select last_insert_id()").to_a.first["last_insert_id()"]
   end
 
   def destroy
