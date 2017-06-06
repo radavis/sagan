@@ -8,8 +8,8 @@ class ActiveRecord
     end
 
     def client
-      # TODO: change, based on environment
-      @_client ||= Mysql2::Client.new(config["development"])
+      environment = Sinatra::Application.environment
+      @_client ||= Mysql2::Client.new(config[environment.to_s])
     end
   end
 end
