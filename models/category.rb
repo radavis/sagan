@@ -4,9 +4,7 @@ class Category < ActiveRecord
   class << self
     def all
       sql = "select distinct links.category from links order by links.category;"
-      client.query(sql, symbolize_keys: true).
-        to_a.
-        map { |row| new(row[:category]) }
+      query(sql).map { |row| new(row[:category]) }
     end
   end
 
@@ -21,10 +19,7 @@ class Category < ActiveRecord
   end
 
   def links
-    sql = "select * from links where category = '#{name}' order by links.title;"
-    self.class.client.
-      query(sql, symbolize_keys: true).
-      to_a.
-      map { |row| Link.new(row) }
+    sql = "select * from links where category = ? order by links.title;"
+    self.class.query(sql, [name]).map { |row| Link.new(row) }
   end
 end

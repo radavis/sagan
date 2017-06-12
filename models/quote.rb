@@ -3,8 +3,7 @@ require_relative "active_record"
 class Quote < ActiveRecord
   class << self
     def all
-      client.query("select * from quotes;", symbolize_keys: true).
-        to_a.
+      query("select * from quotes;").
         map { |quote| new(quote) }
     end
   end

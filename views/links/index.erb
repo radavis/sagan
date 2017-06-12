@@ -4,6 +4,7 @@
     <th>Hostname</th>
     <th>Description</th>
     <th></th>
+    <th></th>
   </tr>
 
   <% links.each do |link| %>
@@ -23,10 +24,14 @@
       </td>
 
       <td>
-        <form class="delete-link right" method="POST" action="/links/<%= link.id %>">
+        <a class="button tiny" href="/links/<%= link.id %>/edit">Edit</a>
+      </td>
+
+      <td>
+        <form class="delete-link" method="POST" action="/links/<%= link.id %>">
           <input type="hidden" name="_method" value="DELETE">
           <input type="hidden" name="name" value="<%= link.title %>">
-          <input class="button tiny secondary" type="submit" value="Delete">
+          <button class="button tiny secondary" type="submit">Delete</button>
         </form>
       </td>
     </tr>

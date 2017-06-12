@@ -35,6 +35,11 @@ get "/links/new" do
   erb :"links/new", locals: { categories: Category.all }
 end
 
+get "/links/:id/edit" do |id|
+  link = Link.find(id)
+  erb :"links/edit", locals: { categories: Category.all, link: link }
+end
+
 get "/categories/:name/links" do |name|
   category = Category.new(name)
   erb :"links/index", locals: { links: category.links }
@@ -43,11 +48,23 @@ end
 post "/links" do
   link = Link.new(params[:link])
   if link.save
-    flash[:notice] = "Link added."
+    flash[:success] = "Link added."
     redirect to("/categories")
   else
-    flash[:error] = "There was a problem..."
+    flash[:alert] = "There was a problem..."
     erb :"links/new", locals: { categories: Category.all }
+  end
+end
+
+put "/links/:id" do |id|
+  link = Link.find(id)
+  link.assign_attributes(params[:link])
+  if link.save
+    flash[:success] = "Link updated."
+    redirect to("/categories")
+  else
+    flash[:alert] = "There was a problem..."
+    erb :"links/edit", locals: { categories: Category.all, link: link }
   end
 end
 

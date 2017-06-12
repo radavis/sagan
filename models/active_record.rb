@@ -7,9 +7,31 @@ class ActiveRecord
       @_config ||= YAML.load_file(filename)
     end
 
+    def query(sql, values = [])
+      escaped_sql = escape_query(sql, values)
+      client.query(escaped_sql, options).to_a
+    end
+
+    private
+
     def client
       environment = Sinatra::Application.environment
       @_client ||= Mysql2::Client.new(config[environment.to_s])
+    end
+
+    def options
+      { symbolize_keys: true }
+    end
+
+    def escape_query(sql, values)
+      values.map! { |value| Mysql2::Client.escape(value) }
+      parts = sql.split("?")
+      result = ""
+      parts.each_with_index do |part, i|
+        result += part
+        result += "'#{values[i]}'" unless i == parts.size - 1
+      end
+      return result
     end
   end
 end

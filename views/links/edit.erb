@@ -1,0 +1,48 @@
+<form action="/links/<%= link.id %>" method="post">
+  <input type="hidden" name="_method" value="PUT">
+  <fieldset>
+    <legend>Edit Link</legend>
+    <div class="row collapse">
+      <div class="small-3 columns">
+        <span class="prefix">Title</span>
+      </div>
+      <div class="small-6 columns">
+        <input type="text" id="title" name="link[title]" value="<%= link.title %>">
+      </div>
+      <div class="small-3 columns">
+        <select class="postfix" name="link[category]">
+          <% categories.each do |category| %>
+            <option
+              <% if link.category.to_s == category.to_s %>
+                selected
+              <% end %>
+              value="<%= category %>">
+              <%= category %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+
+    <div class="row collapse">
+      <div class="small-3 columns">
+        <span class="prefix">http://</span>
+      </div>
+      <div class="small-9 columns">
+        <input type="text" id="url" name="link[url]" value="<%= link.url %>">
+      </div>
+    </div>
+
+    <div class="row collapse">
+      <div class="small-3 columns">
+        <span class="prefix">Description</span>
+      </div>
+      <div class="small-6 columns">
+        <input type="text" id="description" name="link[description]" value="<%= link.description %>">
+      </div>
+      <div class="small-3 columns">
+        <input class="button postfix" type="submit" value="Update Link">
+      </div>
+    </div>
+  </fieldset>
+</form>
