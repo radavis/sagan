@@ -7,20 +7,35 @@ class ActiveRecord
       @_config ||= YAML.load_file(filename)
     end
 
+    def application_config
+      config[environment.to_s]
+    end
+
+    def database_name
+      application_config["database"]
+    end
+
     def query(sql, values = [])
       escaped_sql = escape_query(sql, values)
       client.query(escaped_sql, options).to_a
     end
 
+    def last_insert_id
+      query("select last_insert_id()").first["last_insert_id()"]
+    end
+
     private
 
     def client
-      environment = Sinatra::Application.environment
-      @_client ||= Mysql2::Client.new(config[environment.to_s])
+      @_client ||= Mysql2::Client.new(application_config)
     end
 
     def options
       { symbolize_keys: true }
+    end
+
+    def environment
+      Sinatra::Application.environment
     end
 
     def escape_query(sql, values)

@@ -60,7 +60,7 @@ class Link < ActiveRecord
     SQL
     values = [url, title, description, category]
     self.class.query(sql, values)
-    self.class.query("select last_insert_id()").first[:"last_insert_id()"]
+    !!self.class.last_insert_id
   end
 
   def update
