@@ -86,6 +86,5 @@ $ open sagan.dev
 * [x] Delete links
 * [x] Flash notifications
 * [x] Default tab changes based on day and time
-* [ ] Model specs
-* [ ] Feature specs
-* [ ] Vue.js create/edit/delete components
+* [x] Model specs
+* [x] Feature specs
