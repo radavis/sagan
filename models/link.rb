@@ -40,9 +40,9 @@ class Link < ActiveRecord
 
   def save
     if id
-      update
+      return update
     else
-      create
+      return create
     end
   end
 
@@ -60,7 +60,7 @@ class Link < ActiveRecord
     SQL
     values = [url, title, description, category]
     self.class.query(sql, values)
-    !!self.class.last_insert_id
+    true
   end
 
   def update
@@ -71,6 +71,6 @@ class Link < ActiveRecord
     SQL
     values = [url, title, description, category]
     self.class.query(sql, values)
-    # puts self.class.query("select mysql_affected_rows()")
+    true
   end
 end
