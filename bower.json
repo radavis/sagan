@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "sweetalert": "^2.0.7"
+    "moment": "^2.19.3",
+    "konami-js": "^1.4.7"
   }
 }

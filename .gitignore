@@ -4,3 +4,4 @@ data/links.csv
 sql/data.sql
 sql/seed.sql
 bower_components
+public/vendor/*
