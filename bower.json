@@ -1,0 +1,21 @@
+{
+  "name": "sagan",
+  "homepage": "https://github.com/radavis/sagan",
+  "authors": [
+    "Richard Davis <rdavis.bacs@gmail.com>"
+  ],
+  "description": "A landing page for your browser.",
+  "main": "sagan.rb",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sweetalert": "^2.0.7"
+  }
+}
